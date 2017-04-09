@@ -1,11 +1,12 @@
 clear all
+clc
 
 syms        x1 x2 real
 a           = 2;
-f0(x1,x2)   = x2^2-a*x2*norm([x1;x2])^2+norm([x1;x2])^4;
+f0(x1,x2)=x2^2-a*x2*norm([x1;x2])^2+norm([x1;x2])^4
 
-gf0         = gradient(f0)
-g2f0        = hessian(f0)
+gf0= gradient(f0)
+g2f0= hessian(f0)
 
 dx1         = .02;
 dx2         = .02;
@@ -22,7 +23,7 @@ clf
 contour(x1,x2,f0(x1,x2),40)
 hold on
 
-z           = [0.1;0.25];
+z           = [0.2;0.5];
 df          = double(gf0(z(1),z(2)));
 dx          = [0.15;-0.1];
 
@@ -38,14 +39,13 @@ text((z(1)-df(1))*1.01,z(2)-df(2),'$\mathbf{z}-\nabla f_0(\mathbf{z})$',...
 text((z(1)+dx(1))*1.01,z(2)+dx(2),'$\mathbf{z}+\mathrm{d}\mathbf{x}$',...
     'Interpreter','latex','Fontsize',12)
 
-z           = [0;.525];
-dx          = [.02;-.02];
+z           = [0;.525]
+dx          = [.02;-.02]
 
-FONC        = double(gf0(z(1),z(2)))
-SONC        = dx(1)'*g2f0(z(1)+dx(1),z(2)+dx(2))*dx; SONC = double(SONC)
-convexity   = schur(double(g2f0(z(1)+dx(1),z(2)+dx(2))))
-
-z           = [0;0];
+FONC        = double(gf0(z(1),z(2)))%first order necessary condition
+SONC        = dx(1)'*g2f0(z(1)+dx(1),z(2)+dx(2))*dx; SONC = double(SONC) %second order necessary condition
+convexity   = schur(double(g2f0(z(1)+dx(1),z(2)+dx(2)))) %krzywizna
+z           = [0.01;0]
 dx          = [.02;-.02];
 
 FONC        = double(gf0(z(1),z(2)))
