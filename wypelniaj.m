@@ -1,8 +1,8 @@
 function [dsensor_gora,dsensor_prawo,dsensor_dol,dsensor_lewo] = wypelniaj(dsensor_gora, dsensor_prawo, dsensor_dol, dsensor_lewo)
-
+% labirynt podzielony jest na romby, w zale¿noœci od obszaru rombu, w który
+% klikniemy dorysowuje œcianê
 close;
 a=rysuj_2(dsensor_gora, dsensor_prawo, dsensor_dol, dsensor_lewo);
-
 while(1)
     while (1)
         waitforbuttonpress;

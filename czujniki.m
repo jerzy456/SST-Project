@@ -1,5 +1,7 @@
-function [sensor_gora,sensor_prawo,sensor_dol,sensor_lewo] = czujniki(i,j,sensor_gora,sensor_prawo,sensor_dol,sensor_lewo,...
-                                                                        dsensor_gora, dsensor_prawo, dsensor_dol, dsensor_lewo)
+function [sensor_gora,sensor_prawo,sensor_dol,sensor_lewo] = czujniki(i,j,sensor_gora,sensor_prawo,sensor_dol,sensor_lewo)
+
+load('labirynt_1.mat');
+%oad('labirynt_2.mat');
 
 [dsensor_gora,dsensor_prawo,dsensor_dol,dsensor_lewo] = obrobkaSensorow(dsensor_gora, dsensor_prawo, dsensor_dol, dsensor_lewo);
 

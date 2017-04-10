@@ -4,12 +4,13 @@ close;
 fig=figure(n);
 set(fig,'Position',[300 60 1000 900]);
 hold on;
+%Rysuj plusiki na labiryncie
 for i=0:16
     for j=0:16
         plot(i*10,j*10,'+','LineWidth',1);
     end
 end
-
+%
 for i=1:16
     for j=1:16
         if sensor_gora(j,i)==1

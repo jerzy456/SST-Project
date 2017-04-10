@@ -1,6 +1,6 @@
 %Path optimalization project
 %Rozwi¹¿ labirynt
-symulacja;
+program;
 %Wyrysuj rozwi¹zany labirynt wraz z przejazdem w stylu TAXI
  n=5;
     rysuj_N(sensor_gora, sensor_prawo, sensor_dol, sensor_lewo,mapa,1,1,n);
@@ -11,3 +11,4 @@ symulacja;
         end
     end
  
+%opis tablicy trasa -1- prosto; -2- w prawo; -3- w lewo

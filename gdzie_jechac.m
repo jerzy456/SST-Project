@@ -25,9 +25,7 @@ if j~=1
         b=j-1;
     end
 end
-if a==0||b==0
-    d=0;
-elseif czy_byl(a,b)==0
+if czy_byl(a,b)==0
     d=0;
 end
 end

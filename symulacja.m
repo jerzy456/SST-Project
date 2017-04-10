@@ -1,15 +1,23 @@
 
 
 mapa=zeros(16);
-sensor_gora=zeros(16);
-sensor_prawo=zeros(16);
-sensor_dol=zeros(16);
-sensor_lewo=zeros(16);
+%macierze zawieraj¹ce informacje o labiryncie(to co wie robot), uzupe³niane
+%podczas przejazdu
+%globalna orientacja sta³a
+sensor_gora=zeros(16);%czy w danej komórce jest œciana na górze
+sensor_prawo=zeros(16);%czy w danej komórce jest œciana po prawej
+sensor_dol=zeros(16);%czy w danej komórce jest œciana na dole
+sensor_lewo=zeros(16);%czy w danej komórce jest œciana po lewej
+
+%zmienne do definicji labiryntu, to jest globalnie uzupe³nione, przepisanie
+%tych zmiennych do sensor_ symuluje skanowanie, uzupe³niane komórka po
+%komórce
 dsensor_gora=zeros(16);
 dsensor_prawo=zeros(16);
 dsensor_dol=zeros(16);
 dsensor_lewo=zeros(16);
 
+%wiadomo, ¿e s¹ œciany na brzegach labiryntu
 sensor_gora(16,:)=1;
 sensor_prawo(:,16)=1;
 sensor_dol(1,:)=1;
@@ -18,25 +26,32 @@ dsensor_gora(16,:)=1;
 dsensor_prawo(:,16)=1;
 dsensor_dol(1,:)=1;
 dsensor_lewo(:,1)=1;
-
+%czy by³ w danej komórce
 czy_byl=zeros(16);
+
+%by³ w pierwszej
 czy_byl(1,1)=1;
 
+%licznik przejazdów
 iter=0;
 
+%deklaracja komórek przez, które ma jechaæ
 droga=zeros(256,2);
+% jest w pierwszej i jedzie do góry(zawsze). Sekwencja startu
 droga(1,1)=1;
 droga(1,2)=1;
 
+%sekwencja startu jedŸ na pó³noc
 kierunek=1;
 
+%MENU
 temp = menu('Jaki labirynt chcesz wykorzystaæ?','W³aœny (rysuj labirynt)','Labirynt 1','Labirynt 2');
 switch temp
-    case 1
+    case 1 %sam rysuj labirynt
         [dsensor_gora,dsensor_prawo,dsensor_dol,dsensor_lewo] = wypelniaj(dsensor_gora,dsensor_prawo,dsensor_dol,dsensor_lewo);
-    case 2
+    case 2 %labirynt gotowy 1
         load('labirynt_1.mat');
-    case 3
+    case 3 %labirynt gotowy 22
         load('labirynt_2.mat');
 end
 
